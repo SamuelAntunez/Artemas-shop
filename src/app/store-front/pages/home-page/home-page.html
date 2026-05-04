@@ -1,0 +1,16 @@
+<h1 class="text-3xl font-bold font-montserrat">Todos los productos</h1>
+<h2 class="text-xl mb-5">Para todos los gustos</h2>
+
+<app-pagination [pages]="productsResorce.value()?.pages ?? 0" [currentPage]="paginationService.currentPage()" />
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-2 gap-3">
+  @for (product of productsResorce.value()?.products; track $index) {
+  <app-product-card [product]="product" />
+  } @empty {
+  <div class="col-span-full flex justify-center items-center py-20">
+    <span class="loading loading-spinner loading-xl"></span>
+  </div>
+  }
+</div>
+
+<app-pagination [pages]="productsResorce.value()?.pages ?? 0" [currentPage]="paginationService.currentPage()" />

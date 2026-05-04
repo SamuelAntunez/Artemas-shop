@@ -1,0 +1,24 @@
+<!-- <p (click)="getSlug()">product-page works!</p>, -->
+
+@if ( productsResorce.isLoading()) {
+<div class="flex justify-center items-center h-screen">
+  <span class="loading loading-spinner loading-lg"></span>
+</div>
+}
+
+
+
+@if (productsResorce.hasValue()) {
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+  <!-- imagenes -->
+
+  <app-product-carrousel [images]="productsResorce.value().images" />
+  <!--  -->
+  <div>
+    <h1 class="text-2xl font-bold text-accent font-montserrat"> {{productsResorce.value().title}} </h1>
+    <div class="divider"></div>
+    <p class=""> {{ productsResorce.value().description}} </p>
+  </div>
+</div>
+
+}
